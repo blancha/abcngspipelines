@@ -1,0 +1,14 @@
+[user]
+# If running the job on Guillimin, you must specify your RAPid.
+RAPid=feb-684-ac
+# If you would like to receive emails, write your email.
+mail=
+# Specify when you want to receive job status emails. E.g. bae (b:beginning, a: acort, e: end)
+send_email =
+
+[project]
+type = rnaseq
+genome = GRCm38
+trim = no
+stranded = yes
+

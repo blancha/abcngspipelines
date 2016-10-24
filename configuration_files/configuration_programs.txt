@@ -1,0 +1,231 @@
+[annotatePeaks]
+ppn=3
+walltime=6:00:00
+
+[bamtofastq]
+ppn=2
+walltime=6:00:00
+
+[baserecalibrator]
+walltime=10:00:00
+ppn=3
+xmx=8100m
+
+[bsmap]
+processors=4
+ppn=4
+walltime=1:00:00:00
+
+[bismark]
+ppn=12
+walltime=1:00:00:00
+
+[bowtie1]
+processors = 2
+# report up to <int> good alignments per read (default: 1)
+k = 1
+# report end-to-end hits w/ <=v mismatches; ignore qualities
+v = 0
+
+[bowtie]
+ppn=5
+processors=5
+#--un <path>           write unpaired reads that didn't align to <path>
+un = False
+no_discordant=yes
+
+[bwamem]
+ppn=12
+threads=12
+walltime=10:00:00
+
+[calculatehsmetrics]
+ppn=2
+
+[collectinsertsizemetrics]
+ppn=2
+
+[cuffdiff]
+ppn=12
+walltime=1:00:00:00
+processors=12
+
+[cuffdiff_with_cuffquant]
+ppn=4
+walltime=10:00:00
+processors=4
+
+[cufflinks]
+ppn=4
+walltime=2:00:00:00
+processors=4
+
+[cuffmerge]
+ppn=4
+walltime=10:00:00
+processors=4
+
+[cuffquant]
+ppn=3
+walltime=10:00:00
+processors=3
+
+[cutadapt]
+# TGGAATTCTCGGGTGCCAAGG
+adapter = None 
+# minimum-length = 17
+minimum-length=None 
+# maximum-length=35
+maximum-length=None 
+# quality-cutoff = 20
+quality-cutoff=None 
+# cut = -5
+cut=None
+trim-n=no
+tooshortoutput=no
+toolongoutput=no
+
+[haplotypecaller]
+walltime=2:00:00:00
+ppn=5
+xmx=13500m
+
+[indelrealigner]
+walltime=10:00:00
+ppn=3
+xmx=8100m
+
+[deduplicate_bismark]
+ppn=3
+walltime=6:00:00
+
+[depthofcoverage_primary]
+ppn=2
+
+[depthofcoverage_capture]
+ppn=2
+
+[dexseqcounts]
+walltime=6:00:00
+ppn=3
+processors = 1
+
+[featurecounts]
+ppn = 2
+# Number of the threads. 
+T = 2
+# Count fragments (read pairs) instead of individual reads.
+p = yes
+# Count read pairs that have both ends successfully aligned only.
+B = yes
+# Do not count read pairs that have their two ends mapping to different chromosomes or mapping to same chromosome but on different strands.
+C= yes
+# Perform strand-specific read counting. Possible values: 0 (unstranded), 1 (stranded) and 2 (reversely stranded). 0 by default.
+s = yes
+# Multi-mapping reads will also be counted.
+M = no
+# Assign reads to all their overlapping meta-features (or features if -f is specified).
+O = no
+
+[findMotifs]
+ppn=3
+walltime=6:00:00
+
+[htseqcount]
+walltime=10:00:00
+
+[macs_callpeak]
+ppn=4
+walltime=5:00:00
+format=BAMPE
+keep-dup=1
+qvalue=0.05
+broad=no
+
+[markduplicates]
+ppn=3
+remove_duplicates=yes
+
+[mats]
+ppn=16
+walltime=2:00:00:00
+
+[meanbedgraphs]
+ppn=2
+
+[methylation_extractor]
+ppn=5
+cutoff=5
+walltime=2:00:00:00
+
+[methylkit_sort]
+walltime=11:00:00
+
+[mirdeep]
+ppn=3
+walltime=11:00:00
+
+[picard]
+ppn=3
+xmx=8100m
+folder = ${server:toolsFolder}/picard-tools-2.4.1/
+
+[realignertargetcreator]
+walltime=10:00:00
+ppn=10
+xmx=27000m
+
+[reorder_index]
+ppn=3
+
+[rnaseqc]
+ppn=3
+processors=3
+walltime=11:00:00
+file = ${server:toolsFolder}RNA-SeQC_v1.1.8.jar
+
+[samtools]
+processors=1
+
+[star]
+ppn = 12
+runThreadN = 12
+readLength = 50
+# None
+readFilesCommand = zcat
+# bedGraph
+outWigType = None
+outWigStrand = Stranded
+# BAM Unsorted or SortedByCoordinate or both
+outSAMtype = BAM Unsorted
+sjdbGTFfile = yes
+# GeneCounts, None
+quantMode = None
+outFilterIntronMotifs = None
+limitSjdbInsertNsj = None
+# None
+limitBAMsortRAM = 13500000000 
+# Local or EndToEnd or Extend5pOfRead1
+alignEndsType = None 
+
+[stringtie]
+ppn=2
+processors=2
+
+[tagDirectories]
+ppn=3
+walltime=6:00:00
+
+[tophat]
+processors=4
+ppn=4
+walltime=12:00:00
+no_novel_juncs=yes
+no_discordant=yes
+
+[trimmomatic]
+ppn=3
+threads=2
+trimAdapters=yes
+minlength=36
+

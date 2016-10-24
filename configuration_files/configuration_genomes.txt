@@ -1,0 +1,194 @@
+[GRCh38]
+genome = GRCh38
+species = Homo_sapiens
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Homo_sapiens.GRCh38.77_filtered.doctored.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Homo_sapiens.GRCh38.dna.primary_assembly
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt
+
+[GRCh37]
+genome = GRCh37
+species = Homo_sapiens
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Homo_sapiens.GRCh37.75.gtf
+rnaseqc_gtfFile = ${genomeFolder}/Annotation/Genes/Homo_sapiens.GRCh37.75_rnaseqc.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa
+bisulfiteGenomeFolder = ${genomeFolder}/Sequence/WholeGenomeFasta
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Homo_sapiens.GRCh37.75.dna.primary_assembly
+bowtie1Index = ${genomeFolder}/Sequence/BowtieIndex/Homo_sapiens.GRCh37.75.dna.primary_assembly
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+starIndex_readlength100 = ${genomeFolder}/Sequence/starindex/readlength100
+starIndex_readlength75 = ${genomeFolder}/Sequence/starindex/readlength75
+starIndex_readlength50 = ${genomeFolder}/Sequence/starindex/readlength50
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt
+rrna = ${genomeFolder}/Sequence/rRNA/Homo_sapiens.GRCh37.75.rrna.fa
+
+[hg19]
+genome = hg19
+species = Homo_sapiens
+institute = UCSC
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile =${genomeFolder}/Annotation/Genes/genes.gtf
+genomeFile =${genomeFolder}/Sequence/WholeGenomeFasta/genome.fa
+bowtie2Index =${genomeFolder}/Sequence/Bowtie2Index/genome
+bowtie1Index =${genomeFolder}/Sequence/BowtieIndex/genome
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo =${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo=${genomeFolder}/Annotation/Genes/ChromInfo.txt
+
+[1000k]
+genome = 1000k
+species = Homo_sapiens
+institute = Broad
+genomeFolder = ${server:genomesFolder}/${species}/${institute}
+genomeFile =${genomeFolder}/human_g1k_v37.fasta
+bwaIndex = ${genomeFolder}}/human_g1k_v37.fasta
+
+[GRCm38]
+genome = GRCm38
+species = Mus_musculus
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Mus_musculus.GRCm38.84.gtf
+dexseq_gtfFile=${genomeFolder}/Annotation/Genes/dexseq/Mus_musculus.GRCm38.84.chr.with.aggregate.gff
+rnaseqc_gtfFile = ${genomeFolder}/Annotation/Genes/Mus_musculus.GRCm38.84_rnaseqc.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Mus_musculus.GRCm38.dna.primary_assembly.fa
+bisulfiteGenomeFolder = ${genomeFolder}/Sequence/WholeGenomeFasta
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Mus_musculus.GRCm38.dna.primary_assembly
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+starIndex_readlength100 = ${genomeFolder}/Sequence/starindex/readlength100
+starIndex_readlength75 = ${genomeFolder}/Sequence/starindex/readlength75
+starIndex_readlength50 = ${genomeFolder}/Sequence/starindex/readlength50
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt 
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt 
+rrna = ${genomeFolder}/Sequence/rRNA/Mus_musculus.GRCm38.rrna.fa
+
+[NCBIM37]
+genome = NCBIM37
+species = Mus_musculus
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Mus_musculus.NCBIM37.67.gtf
+dexseq_gtfFile=${genomeFolder}/Annotation/Genes/dexseq/Mus_musculus.NCBIM37.67.gtf.chr.with.aggregate.gff
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Mus_musculus.NCBIM37.67.dna.toplevel.fa 
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Mus_musculus.NCBIM37.67.dna.toplevel
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt 
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt 
+
+[mm10]
+genome = mm10
+species = Mus_musculus
+institute = UCSC
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/genes.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/genome.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/genome
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+
+[rn5]
+genome = rn5
+species = Rattus_norvegicus
+institute = UCSC
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile =${server:genomesFolder}/${species}/${institute}/${genome}/Annotation/Genes/genes.gtf
+genomeFile =${server:genomesFolder}/${species}/${institute}/${genome}/Sequence/WholeGenomeFasta/genome.fa
+bowtie2Index = ${server:genomesFolder}/${species}/${institute}/${genome}/Sequence/Bowtie2Index/genome
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${server:genomesFolder}/${species}/${institute}/${genome}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${server:genomesFolder}/${species}/${institute}/${genome}/Annotation/Genes/ChromInfo.txt
+
+[rn4]
+genome = rn4
+species = Rattus_norvegicus
+institute = UCSC
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${server:genomesFolder}/${species}/${institute}/${genome}/Annotation/Genes/genes.gtf
+genomeFile = ${server:genomesFolder}/${species}/${institute}/${genome}/Sequence/WholeGenomeFasta/genome.fa
+bowtie2Index = ${server:genomesFolder}/${species}/${institute}/${genome}/Sequence/Bowtie2Index/genome
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${server:genomesFolder}/${species}/${institute}/${genome}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${server:genomesFolder}/${species}/${institute}/${genome}/Annotation/Genes/ChromInfo.txt
+
+[EF4]
+genome = EF4
+species = Saccharomyces_cerevisiae
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Saccharomyces_cerevisiae.R64-1-1.75.gtf
+dexseq_gtfFile = ${genomeFolder}/Annotation/Genes/dexseq.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/genome.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/genome
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo_lambda.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt
+
+[BDGP6]
+genome = BDGP6
+species = Drosophila_melanogaster
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Drosophila_melanogaster.BDGP6.83.gtf
+dexseq_gtfFile = ${genomeFolder}/Annotation/Genes/dexseq.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Drosophila_melanogaster.BDGP6.dna.toplevel.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Drosophila_melanogaster.BDGP6.dna.toplevel
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt
+
+[BDGP5]
+genome = BDGP5
+species = Drosophila_melanogaster
+institute = Ensembl
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/Drosophila_melanogaster.BDGP5.78.gtf
+rnaseqc_gtfFile = ${genomeFolder}/Annotation/Genes/Drosophila_melanogaster.BDGP5.78_rnaseqc.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Drosophila_melanogaster.BDGP5.dna.toplevel.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Drosophila_melanogaster.BDGP5.dna.toplevel
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+rrna = ${genomeFolder}/Sequence/rrna/Drosophila_melanogaster.BDGP5.75.rrna.fa
+
+[dm3]
+genome = dm3
+species = Drosophila_melanogaster
+institute = UCSC
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/genes.gtf
+dexseq_gtfFile = ${genomeFolder}/Annotation/Genes/dexseq.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/genome.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/genome
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt
+
+[dm6]
+genome = dm6
+species = Drosophila_melanogaster
+institute = UCSC
+genomeFolder = ${server:genomesFolder}${species}/${institute}/${genome}
+gtfFile = ${genomeFolder}/Annotation/Genes/genes.gtf
+dexseq_gtfFile = ${genomeFolder}/Annotation/Genes/dexseq.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/${genome}.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/${genome}
+bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt
+
+[ecoli]
+genome = ecoli
+species = Escherichia_coli_str_K-12_substr_MG1655
+institute = Ensembl
+genomeFolder = ${genomeFolder}/Sequence/WholeGenomeFasta
+gtfFile = ${genomeFolder}/Annotation/Genes/Escherichia_coli_str_k_12_substr_mg1655.GCA_000005845.2.27.gtf
+genomeFile = ${genomeFolder}/Sequence/WholeGenomeFasta/Escherichia_coli_str_k_12_substr_mg1655.GCA_000005845.2.27.dna_rm.genome.fa
+bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/Escherichia_coli_str_k_12_substr_mg1655.GCA_000005845.2.27.dna_rm.genome
+chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+UCSCchromInfo = ${genomeFolder}/Annotation/Genes/UCSCChromInfo.txt 

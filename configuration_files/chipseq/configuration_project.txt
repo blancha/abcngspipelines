@@ -1,0 +1,19 @@
+[user]
+# If running the job on Guillimin, you must specify your RAPid.
+RAPid=afb-431-ad
+# If you would like to receive emails, write your email.
+mail=
+# Specify when you want to receive job status emails. E.g. bae (b:beginning,
+# a: 
+acort, e: end)
+send_email =
+
+[project]
+type = chipseq
+genome = GRCm38
+trim = yes
+stranded = yes
+
+[macs2]
+comparisons=IP_IC vs input_IC, IP_IC_74 vs input_IC_74, IP_IC_32 vs input_IC_32
+
