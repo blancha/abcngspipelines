@@ -13,7 +13,6 @@ import util
 # Read the command line arguments.
 parser = argparse.ArgumentParser(description="Generates Trimmomatic scripts.")
 parser.add_argument("-s", "--scriptsDirectory", help="Scripts directory.", default="trimmomatic")
-parser.add_argument("-i", "--inputDirectory", help="Input directory with FASTQ files.", default="../data/FASTQ_files/untrimmed")
 parser.add_argument("-o", "--outputDirectory", help="Output directory with trimmed FASTQ files.", default="../data/FASTQ_files/trimmed")
 parser.add_argument("-q", "--submitJobsToQueue", help="Submit jobs to queue immediately.", choices=["yes", "no", "y", "n"], default="no")
 args = parser.parse_args()
@@ -23,11 +22,11 @@ util.cdMainScriptsDirectory()
 
 # Process the command line arguments.
 scriptsDirectory = os.path.abspath(args.scriptsDirectory) 
-inputDirectory = os.path.abspath(args.inputDirectory)
 outputDirectory = os.path.abspath(args.outputDirectory)
 
-# Check if the inputDirectory exists, and is a directory.
-util.checkInputDirectory(args.inputDirectory)
+# Read samples file.
+samplesDataFrame = util.readSamplesFile()
+samples = samplesDataFrame["sample"].tolist()
 
 # Read configuration files
 config = util.readConfigurationFiles()
@@ -36,7 +35,8 @@ header = config.getboolean("server", "PBS_header")
 trimAdapters = config.getboolean("trimmomatic", "trimAdapters")
 toolsFolder = config.get("server", "toolsFolder")
 threads = config.get("trimmomatic", "threads")
-minlength=config.get("trimmomatic", "minlength")
+minlength = config.get("trimmomatic", "minlength")
+adaptersFile = config.get("trimmomatic", "adaptersFile")
 
 # Create scripts directory, if it does not exist yet, and cd to it.
 if not os.path.exists(scriptsDirectory):
@@ -47,29 +47,33 @@ os.chdir(scriptsDirectory)
 if not os.path.exists(outputDirectory + "/unpaired"):
     os.makedirs(outputDirectory + "/unpaired")
 
-# Store the list of files with the extensions fastq or fastq.gz 
-files = glob.glob(inputDirectory + "/*.fastq") + glob.glob(inputDirectory + "/*.fastq.gz")
-files.sort()
-
-# Write the script(s)
-# Cycle through all the files, 2 by 2.
-for i in range(0, len(files), 2): 
-    fileR1=os.path.basename(files[i])
-    fileR2=os.path.basename(files[i+1])
+# Cycle through all the samples and write the fastqc scripts.
+for index, row in samplesDataFrame.iterrows():
+    sample = row["sample"]
+    file_r1 = row["file_r1"]
+    file_r2 = row["file_r2"]
+    files = [file_r1, file_r2]
+    if "lane" in samplesDataFrame.columns:
+        lane = "_" + row["lane"]
+    else:
+        lane = ""
+    sample +=lane
     # Create script file.
-    scriptName = 'trimmomatic_' + fileR1.replace("_R1", "") + '.sh'
+    scriptName = 'trimmomatic_' + sample + '.sh'
     script = open(scriptName, 'w')
     if header:
         util.writeHeader(script, config, "trimmomatic")
-    script.write("java org.usadellab.trimmomatic.TrimmomaticPE -threads " + threads + " \\\n")
-    script.write(inputDirectory + "/" + fileR1 + " \\\n")
-    script.write(inputDirectory + "/" + fileR2 + " \\\n")
-    script.write(outputDirectory + "/" + fileR1 + " \\\n")
-    script.write(outputDirectory + "/unpaired/" + fileR1 + " \\\n")
-    script.write(outputDirectory + "/" + fileR2 + " \\\n")
-    script.write(outputDirectory + "/unpaired/" + fileR2 + " \\\n")
+    script.write("java -jar " + os.path.join(toolsFolder, "Trimmomatic-0.35", "trimmomatic-0.35.jar") + " \\\n")
+    script.write("PE" + " \\\n")
+    script.write("-threads " + threads + " \\\n")
+    script.write(os.path.join("..", file_r1) + " \\\n")
+    script.write(os.path.join("..", file_r2) + " \\\n")
+    script.write(os.path.relpath(os.path.join(outputDirectory, os.path.splitext(os.path.basename(file_r1))[0] + lane + os.path.splitext(os.path.basename(file_r1))[1])) + " \\\n")
+    script.write(os.path.relpath(os.path.join(outputDirectory, "unpaired", os.path.splitext(os.path.basename(file_r1))[0] + lane + os.path.splitext(os.path.basename(file_r1))[1])) + " \\\n")
+    script.write(os.path.relpath(os.path.join(outputDirectory, os.path.splitext(os.path.basename(file_r2))[0] + lane + os.path.splitext(os.path.basename(file_r2))[1])) + " \\\n")
+    script.write(os.path.relpath(os.path.join(outputDirectory, "unpaired", os.path.splitext(os.path.basename(file_r2))[0] + lane + os.path.splitext(os.path.basename(file_r2))[1])) + " \\\n")
     if trimAdapters:
-        script.write("ILLUMINACLIP:" + toolsFolder + "Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10 " + "\\\n")
+        script.write("ILLUMINACLIP:" + adaptersFile + ":2:30:10 " + "\\\n")
     script.write("LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:" + minlength + " \\\n")
     script.write("&> " + scriptName + ".log")
     script.close()    

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-# Version 1.1
+# Version 1.2
 # Author Alexis Blanchet-Cohen
-# Date: 16/05/2014
+# Last modified: 27/10/2016
 
 import argparse
 import glob
@@ -14,21 +14,21 @@ import util
 # Read the command line arguments.
 parser = argparse.ArgumentParser(description='Generates FastQC scripts.')
 parser.add_argument("-s", "--scriptsDirectory", help="Scripts directory. DEFAULT=fastqc", default="fastqc")
-parser.add_argument("-i", "--inputDirectory", help="Input directory with FastQC files. DEFAULT=../data/FASTQ_files/untrimmed", default="../data/FASTQ_files/untrimmed")
 parser.add_argument("-o", "--outputDirectory", help="Output directory with FastQC results. DEFAULT=../results/fastqc", default="../results/fastqc")
+parser.add_argument("-l", "--laneDirectories", help="Create a different directory for each lane. Useful when the FASTQ files for different lanes have the same name.", choices=["yes", "no", "y", "n"], default="no")
 parser.add_argument("-q", "--submitJobsToQueue", help="Submit jobs to queue immediately. DEFAULT=no", choices=["yes", "no", "y", "n"], default="no")
 args = parser.parse_args()
 
 # If not in the main scripts directory, cd to the main scripts directory, if it exists.
-#util.cdMainScriptsDirectory()
+util.cdMainScriptsDirectory()
 
 # Process command line arguments.
 scriptsDirectory = os.path.abspath(args.scriptsDirectory)
-inputDirectory = os.path.abspath(args.inputDirectory)
 outputDirectory = os.path.abspath(args.outputDirectory)
 
-# Check if the inputDirectory exists, and is a directory.
-util.checkInputDirectory(inputDirectory)
+# Read samples file.
+samplesDataFrame = util.readSamplesFile()
+samples = samplesDataFrame["sample"].tolist()
 
 # Create script and output directories, if they do not exist yet.
 util.makeDirectory(outputDirectory, recursive=True)
@@ -42,20 +42,32 @@ header = config.getboolean("server", "PBS_header")
 # Change to scripts directory
 os.chdir(scriptsDirectory)
 
-# Store all the FASTQ_files filenames.
-files = glob.glob(inputDirectory + "/*fastq") + glob.glob(inputDirectory + "/*fastq.gz")
-
-# Write script
-for file in files:                  
-    scriptName = "fastqc_" + os.path.basename(file) + ".sh"
-    script = open(scriptName, "w")
-    if header:
-        util.writeHeader(script, config, "fastqc")
-    script.write("fastqc " + "\\\n")
-    script.write("--outdir " + os.path.relpath(outputDirectory)  + " \\\n")
-    script.write(file + " \\\n")
-    script.write("&> " + scriptName + ".log")
-    script.close()
+# Cycle through all the samples and write the fastqc scripts.
+for index, row in samplesDataFrame.iterrows():
+    sample = row["sample"]
+    file_r1 = row["file_r1"]
+    file_r2 = row["file_r2"]
+    files = [file_r1, file_r2]
+    if "lane" in samplesDataFrame.columns:
+        lane = "_" + row["lane"]
+    else:
+        lane = ""
+    # Write script
+    for file in files:                  
+        scriptName = "fastqc_" + os.path.basename(file) +lane + ".sh"
+        script = open(scriptName, "w")
+        if header:
+            util.writeHeader(script, config, "fastqc")
+        script.write("fastqc " + "\\\n")
+        if (args.laneDirectories == "no") | (args.laneDirectories == "no"):
+            script.write("--outdir " + os.path.relpath(outputDirectory)  + " \\\n")
+        elif "lane" in samplesDataFrame.columns:
+            if not os.path.exists(os.path.join(outputDirectory, row["lane"])):
+                os.mkdir(outputDirectory, row["lane"])
+            script.write("--outdir " + os.path.relpath(outputDirectory, row["lane"])  + " \\\n")
+        script.write(os.path.join("..", file) + " \\\n")
+        script.write("&> " + scriptName + ".log")
+        script.close()
 
 if (args.submitJobsToQueue.lower() == "yes") | (args.submitJobsToQueue.lower() == "y"):
     subprocess.call("submitJobs.py", shell=True)

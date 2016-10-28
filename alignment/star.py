@@ -58,7 +58,7 @@ outFilterIntronMotifs = config.get("star", "outFilterIntronMotifs")
 alignEndsType = config.get("star", "alignEndsType")
 
 # Read samples file.
-samplesFile = util.readSamplesFile()
+samplesDataFrame = util.readSamplesFile()
 
 # Create scripts directory, if it does not exist yet, and cd to it.
 if not os.path.exists(scriptsDirectory):
@@ -70,10 +70,17 @@ if not os.path.exists(outputDirectory):
     os.makedirs(outputDirectory)
 
 # Cycle through all the samples and write the star scripts.
-for index, row in samplesFile.iterrows():
+for index, row in samplesDataFrame.iterrows():
     sample = row["sample"]
-    file_R1 = row["file_r1"]
-    file_R2 = row["file_r2"]
+    file_r1 = row["file_r1"]
+    file_r2 = row["file_r2"]
+    if "lane" in samplesDataFrame.columns:
+        lane = "_" + row["lane"]
+    else:
+        lane = ""    
+    file_r1=os.path.splitext(os.path.basename(file_r1))[0] + lane + os.path.splitext(os.path.basename(file_r1))[1]
+    file_r2=os.path.splitext(os.path.basename(file_r2))[0] + lane + os.path.splitext(os.path.basename(file_r2))[1]
+    sample += lane
     # Create output directories
     if not os.path.exists(outputDirectory + "/" +  sample):
         os.mkdir(outputDirectory + "/" + sample)    
@@ -90,8 +97,8 @@ for index, row in samplesFile.iterrows():
     if not sjdbGTFfile == "None":
         script.write("--sjdbGTFfile " + sjdbGTFfile + " \\\n")
     script.write("--readFilesIn " + "\\\n")
-    script.write(os.path.relpath(os.path.join(inputDirectory, file_R1)) + " \\\n")
-    script.write(os.path.relpath(os.path.join(inputDirectory, file_R2)) + " \\\n")
+    script.write(os.path.relpath(os.path.join(inputDirectory, file_r1)) + " \\\n")
+    script.write(os.path.relpath(os.path.join(inputDirectory, file_r2)) + " \\\n")
     if readFilesCommand == "zcat" or readFilesCommand == "gunzip -c" or readFilesCommand == "bunzip -c":
                script.write("--readFilesCommand " + readFilesCommand + " \\\n")
     script.write("--outFileNamePrefix " + os.path.relpath(os.path.join(outputDirectory, sample, sample)) + " \\\n")
