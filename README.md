@@ -1,10 +1,5 @@
 # abcngspipelines
 
-### Who do I talk to? ###
-
-* Alexis Blanchet-Cohen
-* alexis.blanchet-cohen@mail.mcgill.ca
-
 The abcpipelines are a collection of Python and R scripts for the analysis of next-generation sequencing data.
 The scripts form a flexible and modular framework for next generation sequencing analyses.
 The pipelines currently run on one of Compute Canada's computing clusters, Guillimin, and on the local servers of two research institutes in Montreal.
@@ -21,3 +16,7 @@ Feel free to use and adapt the scripts for your own use, as long as you give cre
 ### Full documentation (not up-to-date) ###
 * http://confluence.ircm.qc.ca/display/IP/IRCM+NGS+pipelines
 
+### Who do I talk to? ###
+
+* Alexis Blanchet-Cohen
+* alexis.blanchet-cohen@mail.mcgill.ca
