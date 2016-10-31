@@ -5,7 +5,7 @@
 * Alexis Blanchet-Cohen
 * alexis.blanchet-cohen@mail.mcgill.ca
 
-The IRCM NGS pipelines are a collection of Python and R scripts for the analysis of next-generation sequencing data.
+The abcpipelines are a collection of Python and R scripts for the analysis of next-generation sequencing data.
 The scripts form a flexible and modular framework for next generation sequencing analyses.
 The pipelines currently run on one of Compute Canada's computing clusters, Guillimin, and on the local servers of two research institutes in Montreal.
 
