@@ -64,7 +64,7 @@ if not os.path.exists(outputDirectory):
 for index, row in samplesFile.iterrows():
     sample = row["sample"]
     if "lane" in samplesFile.columns:
-        sample += "_lane_" + row["lane"]   
+        sample += "_" + row["lane"]   
     scriptName = "featurecounts_" + sample + ".sh"
     script = open(scriptName, "w")
     if header:
