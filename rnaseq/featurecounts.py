@@ -39,10 +39,10 @@ genome = config.get("project", "genome")
 genomeFile = config.get(genome, "genomeFile")
 gtfFile = config.get(genome, "gtfFile")
 T = config.get("featurecounts", "T")
+s = config.get("featurecounts", "s")
 p = config.getboolean("featurecounts", "p")
 B = config.getboolean("featurecounts", "B")
 C = config.getboolean("featurecounts", "C")
-s = config.getboolean("featurecounts", "s")
 M = config.getboolean("featurecounts", "M")
 O = config.getboolean("featurecounts", "O")
 
@@ -77,8 +77,7 @@ for index, row in samplesFile.iterrows():
         script.write("-B" + " \\\n")
     if C:
         script.write("-C" + " \\\n")
-    if s:
-        script.write("-s 2" + " \\\n")
+    script.write("-s " + s + " \\\n")
     if M:
         script.write("-M" + " \\\n")
     if O:

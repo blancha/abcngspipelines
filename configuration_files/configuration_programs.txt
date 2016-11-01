@@ -121,7 +121,7 @@ B = yes
 # Do not count read pairs that have their two ends mapping to different chromosomes or mapping to same chromosome but on different strands.
 C= yes
 # Perform strand-specific read counting. Possible values: 0 (unstranded), 1 (stranded) and 2 (reversely stranded). 0 by default.
-s = yes
+s = 0
 # Multi-mapping reads will also be counted.
 M = no
 # Assign reads to all their overlapping meta-features (or features if -f is specified).
