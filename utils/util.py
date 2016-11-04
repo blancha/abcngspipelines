@@ -28,6 +28,8 @@ def writeHeader(script, config, section):
         script.write("#PBS -m " + config.get('user', 'send_email') + "\n")
         script.write("#PBS -M " + config.get('user', 'email') + "\n")
     script.write("cd $PBS_O_WORKDIR\n")
+    if config.getboolean("server", "purge_modules"):
+        script.write("module purge" + "\n")
     script.write("\n")
 
 def readConfigurationFiles():
