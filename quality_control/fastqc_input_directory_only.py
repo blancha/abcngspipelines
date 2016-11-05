@@ -47,8 +47,8 @@ files = os.listdir(inputDirectory)
 
 # Cycle through all the files and write the fastqc scripts.
 for file in files:
-    if not os.path.isfile(file):
-	continue
+    if not os.path.isfile(os.path.join(inputDirectory, file)):
+        continue
     scriptName = "fastqc_" + os.path.basename(file) + ".sh"
     script = open(scriptName, "w")
     if header:

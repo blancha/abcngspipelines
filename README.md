@@ -5,7 +5,6 @@ The scripts form a flexible and modular framework for next generation sequencing
 The pipelines currently run on one of Compute Canada's computing clusters, Guillimin, and on the local servers of two research institutes in Montreal.
 
 The scripts are still under active development.
-As such, they are not quite ready for release to the general public.
 They are, however, already being used extensively to analyze next-generation sequencing data.
 
 The Python scripts simply generate the command scripts, but do not submit commands directly to the queue.
