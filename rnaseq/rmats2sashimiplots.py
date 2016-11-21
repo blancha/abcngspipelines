@@ -55,7 +55,7 @@ samplesFile = pandas.read_csv("samples.txt", delim_whitespace=True)
 
 # Get samples
 samples = list(samplesFile["sample"])
-conditions = list(samplesFile["condition"])
+conditions = list(samplesFile["group"])
 unique_conditions = list(OrderedDict.fromkeys(conditions)) # Remove duplicates
 
 # Create scripts directory, if it does not exist yet, and cd to it.
@@ -89,9 +89,9 @@ for comparison in comparisons:
     if not os.path.exists(os.path.join(outputDirectory, comparison)):
         os.mkdir(os.path.join(outputDirectory, comparison))
     condition1 = comparison.split("_vs_")[0].strip()
-    samples1 =  list(samplesFile[samplesFile["condition"] == condition1]["sample"])
+    samples1 =  list(samplesFile[samplesFile["group"] == condition1]["sample"])
     condition2 = comparison.split("_vs_")[1].strip()
-    samples2 =  list(samplesFile[samplesFile["condition"] == condition2]["sample"])
+    samples2 =  list(samplesFile[samplesFile["group"] == condition2]["sample"])
     # Create script for each event
     for event in events:
          # Create event subdirectory in comparison directory, if it does not exist yet.

@@ -2,4 +2,5 @@
 toolsFolder = ${TOOLS}/
 genomesFolder = ${GENOMES}/
 PBS_header = yes
-purge_modules = yes
+purge_modules = no
+use_modules = no

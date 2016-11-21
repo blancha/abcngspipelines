@@ -51,20 +51,20 @@ for index, row in samplesFile.iterrows():
         if (index==0):
             new_condition = True
         else:
-            if (row["condition"] != previous_condition):
+            if (row["group"] != previous_condition):
                 new_condition = True
             else:
                 new_condition = False
         # If condition is new, generate tracks for new condition.      
         if new_condition: 
             for strand in strands:
-                ucsc_tracks.write("track type=bigWig name=" + row["condition"] + strand + " ")
+                ucsc_tracks.write("track type=bigWig name=" + row["group"] + strand + " ")
                 if stranded & (strand != ""): 
                     ucsc_tracks.write("visibility=0")
                 else:
                     ucsc_tracks.write("visibility=2")
                 ucsc_tracks.write("color=0,0,0 ")
-                ucsc_tracks.write("bigDataUrl=" + os.path.join("http://biosrv02.ircm.qc.ca/", lab, project, cwd, row["condition"] + strand + ".bw"))
+                ucsc_tracks.write("bigDataUrl=" + os.path.join("http://biosrv02.ircm.qc.ca/", lab, project, cwd, row["group"] + strand + ".bw"))
                 ucsc_tracks.write("\n")
     # Generate tracks for sample.
     for strand in strands:
@@ -79,7 +79,7 @@ for index, row in samplesFile.iterrows():
         ucsc_tracks.write("bigDataUrl=" + os.path.join("http://biosrv02.ircm.qc.ca/", lab, project, cwd, row["sample"] + strand + ".bw"))
         ucsc_tracks.write("\n")
     # Reset condition
-    previous_condition = row["condition"]
+    previous_condition = row["group"]
 
 ucsc_tracks.close()
                        

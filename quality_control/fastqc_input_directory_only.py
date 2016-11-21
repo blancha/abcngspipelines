@@ -55,7 +55,7 @@ for file in files:
         util.writeHeader(script, config, "fastqc")
     script.write("fastqc " + "\\\n")
     script.write("--outdir " + os.path.relpath(outputDirectory)  + " \\\n")
-    script.write(os.path.relpath(os.path.join(file)) + " \\\n")
+    script.write(os.path.relpath(os.path.join(inputDirectory, file)) + " \\\n")
     script.write("&> " + scriptName + ".log")
     script.close()
 

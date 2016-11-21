@@ -85,6 +85,9 @@ trim-n=no
 tooshortoutput=no
 toolongoutput=no
 
+[fastqc]
+module = fastqc
+
 [haplotypecaller]
 walltime=2:00:00:00
 ppn=5
@@ -228,6 +231,8 @@ ppn=3
 threads=2
 trimAdapters=yes
 minlength=36
-adaptersFile=/sb/software/areas/ircm/tools/Trimmomatic-0.36/adapters/TruSeq3-PE.fa
+version=0.35
+programFile = ${server:toolsFolder}/trimmomatic/${version}/trimmomatic-${version}.jar
+adaptersFile = ${server:toolsFolder}/trimmomatic/${version}/adapters/TruSeq3-PE.fa
 
 

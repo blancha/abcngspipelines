@@ -54,7 +54,7 @@ samplesFile = pandas.read_csv("samples.txt", sep="\t")
 
 # Get samples
 samples = samplesFile["sample"]
-conditions = samplesFile["condition"]
+conditions = samplesFile["group"]
 
 # Change to scripts directory
 os.chdir(scriptsDirectory)

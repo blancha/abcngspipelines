@@ -34,7 +34,7 @@ samplesFile = util.readSamplesFile()
 
 # Get samples
 samples = samplesFile["sample"]
-conditions = samplesFile["condition"]
+conditions = samplesFile["group"]
 unique_conditions = list(OrderedDict.fromkeys(conditions)) # Remove duplicates.
 
 # Read configuration files

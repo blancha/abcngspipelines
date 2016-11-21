@@ -38,6 +38,9 @@ util.makeDirectory(scriptsDirectory, recursive=True)
 config = util.readConfigurationFiles()
 
 header = config.getboolean("server", "PBS_header")
+use_modules = config.getboolean("server", "use_modules")
+if use_modules:
+    module = config.get("fastqc", "module")
 
 # Change to scripts directory
 os.chdir(scriptsDirectory)
@@ -58,16 +61,18 @@ for index, row in samplesDataFrame.iterrows():
         script = open(scriptName, "w")
         if header:
             util.writeHeader(script, config, "fastqc")
-        script.write("fastqc " + "\\\n")
-        if (args.laneDirectories == "no") | (args.laneDirectories == "no"):
-            script.write("--outdir " + os.path.relpath(outputDirectory)  + " \\\n")
-        elif "lane" in samplesDataFrame.columns:
-            if not os.path.exists(os.path.join(outputDirectory, row["lane"])):
-                os.mkdir(outputDirectory, row["lane"])
-            script.write("--outdir " + os.path.relpath(outputDirectory, row["lane"])  + " \\\n")
-        script.write(os.path.join("..", file) + " \\\n")
-        script.write("&> " + scriptName + ".log")
-        script.close()
+            if use_modules:
+                util.write("module load " + module + "\\\n\\\n")    
+            script.write("fastqc " + "\\\n")
+            if (args.laneDirectories == "no") | (args.laneDirectories == "no"):
+                script.write("--outdir " + os.path.relpath(outputDirectory)  + " \\\n")
+            elif "lane" in samplesDataFrame.columns:
+                if not os.path.exists(os.path.join(outputDirectory, row["lane"])):
+                    os.mkdir(outputDirectory, row["lane"])
+                script.write("--outdir " + os.path.relpath(outputDirectory, row["lane"])  + " \\\n")
+            script.write(file + " \\\n")
+            script.write("&> " + scriptName + ".log")
+            script.close()
 
 if (args.submitJobsToQueue.lower() == "yes") | (args.submitJobsToQueue.lower() == "y"):
     subprocess.call("submitJobs.py", shell=True)

@@ -50,7 +50,7 @@ if not os.path.exists("samples.txt"):
 samplesFile = pandas.read_csv("samples.txt", delim_whitespace=True)
 
 # Get samples
-conditions = samplesFile["condition"]
+conditions = samplesFile["group"]
 unique_conditions = list(OrderedDict.fromkeys(conditions)) # Remove duplicates.
 
 # Create scripts directory, if it does not exist yet, and cd to it.

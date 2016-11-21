@@ -28,6 +28,11 @@ outputDirectory = os.path.abspath(args.outputDirectory)
 samplesDataFrame = util.readSamplesFile()
 samples = samplesDataFrame["sample"].tolist()
 
+# Create samples file after trimming
+samples_after_trimming = open("samples_after_trimming.txt", "w")
+samples_after_trimming.write("\t".join(samplesDataFrame.columns.tolist()))
+samples_after_trimming.write("\n")
+
 # Read configuration files
 config = util.readConfigurationFiles()
 
@@ -36,6 +41,7 @@ trimAdapters = config.getboolean("trimmomatic", "trimAdapters")
 toolsFolder = config.get("server", "toolsFolder")
 threads = config.get("trimmomatic", "threads")
 minlength = config.get("trimmomatic", "minlength")
+programFile = config.get("trimmomatic", "programFile")
 adaptersFile = config.get("trimmomatic", "adaptersFile")
 
 # Create scripts directory, if it does not exist yet, and cd to it.
@@ -52,6 +58,11 @@ for index, row in samplesDataFrame.iterrows():
     sample = row["sample"]
     file_r1 = row["file_r1"]
     file_r2 = row["file_r2"]
+    group = row["group"]
+    samples_after_trimming.write(
+        os.path.relpath(os.path.join(outputDirectory, os.path.basename(file_r1))) + "\t" +
+        os.path.relpath(os.path.join(outputDirectory, os.path.basename(file_r2))) + "\t" +
+        sample + "\t" + group + "\n")
     files = [file_r1, file_r2]
     if "lane" in samplesDataFrame.columns:
         lane = "_" + row["lane"]
@@ -63,11 +74,11 @@ for index, row in samplesDataFrame.iterrows():
     script = open(scriptName, 'w')
     if header:
         util.writeHeader(script, config, "trimmomatic")
-    script.write("java -jar " + os.path.join(toolsFolder, "Trimmomatic-0.35", "trimmomatic-0.35.jar") + " \\\n")
+    script.write("java -jar " + programFile + " \\\n")
     script.write("PE" + " \\\n")
     script.write("-threads " + threads + " \\\n")
-    script.write(os.path.join("..", file_r1) + " \\\n")
-    script.write(os.path.join("..", file_r2) + " \\\n")
+    script.write(os.path.relpath(file_r1) + " \\\n")
+    script.write(os.path.relpath(file_r2) + " \\\n")
     script.write(os.path.relpath(os.path.join(outputDirectory, os.path.splitext(os.path.basename(file_r1))[0] + lane + os.path.splitext(os.path.basename(file_r1))[1])) + " \\\n")
     script.write(os.path.relpath(os.path.join(outputDirectory, "unpaired", os.path.splitext(os.path.basename(file_r1))[0] + lane + os.path.splitext(os.path.basename(file_r1))[1])) + " \\\n")
     script.write(os.path.relpath(os.path.join(outputDirectory, os.path.splitext(os.path.basename(file_r2))[0] + lane + os.path.splitext(os.path.basename(file_r2))[1])) + " \\\n")
@@ -77,6 +88,8 @@ for index, row in samplesDataFrame.iterrows():
     script.write("LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:" + minlength + " \\\n")
     script.write("&> " + scriptName + ".log")
     script.close()    
+
+samples_after_trimming.close()
 
 if (args.submitJobsToQueue.lower() == "yes") | (args.submitJobsToQueue.lower() == "y"):
     subprocess.call("submitJobs.py", shell=True)
