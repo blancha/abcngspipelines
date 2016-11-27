@@ -17,7 +17,7 @@ Feel free to use and adapt the scripts for your own use, as long as you give cre
 
 ### Requirements
 * Python 3.5 or higher
-** Pandas module
+    * Pandas module
 
 ### Who do I talk to? ###
 
