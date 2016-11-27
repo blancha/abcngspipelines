@@ -16,7 +16,7 @@ Feel free to use and adapt the scripts for your own use, as long as you give cre
 * http://confluence.ircm.qc.ca/display/IP/IRCM+NGS+pipelines
 
 ### Requirements
-Python 3.5 or higher
+* Python 3.5 or higher
 
 ### Who do I talk to? ###
 
