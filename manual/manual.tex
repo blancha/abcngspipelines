@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{appendix}
+\usepackage{hyperref}
+\usepackage{datatool}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+
+\title{ Manual for abcngspipelines }
+
+\author{ Alexis Blanchet-Cohen, Bioinformatics analyst \\ alexis.blanchet-cohen@mail.mcgill.ca}
+\begin{document}
+
+\maketitle
+\thispagestyle{empty} % removes numbering from title page.
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction and philosophy}
+
+The intent of abcngspipelines is to provide a flexible and modular framework in which to perform the analysis of next-generation sequencing data.
+The pipeline can easily be modified either by changing the parameters in the configuration files, or by editing the source code directly.
+
+The accent is always on simplicity, flexibility and full user control.
+One manifestation of this philosophy is that the pipeline never performs the analysis directly. The pipeline simply generates the command scripts. This gives the opportunity to the end-user to verify and manually edit the command scripts.
+
+\section{Configuration files}
+There are 3 levels of configuration files: global, project, and user.
+
+\section{Directory structue}
+This is the default directory structure, which we recommend you follow.
+The pipeline is however flexible enough to handle any directory structure.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.7]{directoryStructure.pdf}
+\caption{Directory structure. To make the figure easier to read, a few directori
+es were omitted from this figure.}
+\label{figure:directory_structure}
+\end{figure}
+
+\section{Requirements}
+\begin{itemize}
+    \item{Python 3.5+}
+    \begin{itemize}
+	\item{Pandas module}
+    \end{itemize}
+\end{itemize}
+
+\clearpage
+\bibliography{references}
+\bibliographystyle{plain}
+
+\end{document}
+                 
