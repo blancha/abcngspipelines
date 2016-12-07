@@ -2,3 +2,4 @@
 \contentsline {section}{\numberline {2}Configuration files}{3}{section.2}
 \contentsline {section}{\numberline {3}Directory structue}{3}{section.3}
 \contentsline {section}{\numberline {4}Requirements}{3}{section.4}
+\contentsline {section}{\numberline {5}License}{3}{section.5}
