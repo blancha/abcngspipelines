@@ -41,6 +41,7 @@ bowtie1Index =${genomeFolder}/Sequence/BowtieIndex/genome
 bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
 chromInfo =${genomeFolder}/Annotation/Genes/ChromInfo.txt
 UCSCchromInfo=${genomeFolder}/Annotation/Genes/ChromInfo.txt
+cellrangerTranscriptome=${TOOLS}/cellranger/2.0.1/refdata-cellranger-hg19-1.2.0
 
 [1000k]
 genome = 1000k

@@ -2,7 +2,7 @@
 # Modify as needed.
 # $TOOLS is an environment variable set to the tools folder in my .bash_profile.
 # $TOOLs can be replacaed by the full path to the tools folder.
-export PIPELINES_FOLDER=$TOOLS/abcngspipelines
+export PIPELINES_FOLDER=${TOOLS}/abcngspipelines/0.2.1
 
 #######################################################
 # Sets paths to Python scripts used in NGS pipelines. #
@@ -21,6 +21,7 @@ PATH=$PIPELINES_FOLDER/report:$PATH
 PATH=$PIPELINES_FOLDER/rnaseq:$PATH
 PATH=$PIPELINES_FOLDER/rnaseq/deseq:$PATH
 PATH=$PIPELINES_FOLDER/samtools:$PATH
+PATH=$PIPELINES_FOLDER/scrnaseq:$PATH
 PATH=$PIPELINES_FOLDER/smallrnaseq:$PATH
 PATH=$PIPELINES_FOLDER/sra:$PATH
 PATH=$PIPELINES_FOLDER/trimming:$PATH
