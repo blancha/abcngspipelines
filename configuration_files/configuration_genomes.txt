@@ -94,7 +94,11 @@ bowtie2Index = ${genomeFolder}/Sequence/Bowtie2Index/genome
 bwaIndex = ${genomeFolder}/Sequence/BWAIndex/genome
 chromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
 UCSCchromInfo = ${genomeFolder}/Annotation/Genes/ChromInfo.txt
+<<<<<<< HEAD
 cellrangerTranscriptome=${TOOLS}/cellranger/2.0.1/refdata-cellranger-mm10-1.2.0
+=======
+cellrangertranscriptome=${genomeFolder}/
+>>>>>>> 394e8d29704dbabb1bb1dfd4941b643648c1bcdd
 
 [rn5]
 genome = rn5
