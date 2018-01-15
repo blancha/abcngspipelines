@@ -42,6 +42,15 @@ walltime=10:00:00
 [calculatehsmetrics]
 ppn=2
 
+[cellrangercount]
+ppn=12
+mem=60GB
+vmem=60GB
+localcores=12
+localmem=60GB
+genome=hg19
+walltime=36:00:00
+
 [collectinsertsizemetrics]
 ppn=2
 

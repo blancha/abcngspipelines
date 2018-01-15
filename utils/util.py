@@ -4,6 +4,7 @@ from collections import OrderedDict
 from configparser import ConfigParser, ExtendedInterpolation
 import os
 import pandas
+import socket
 import subprocess
 import sys
 
@@ -12,18 +13,26 @@ def writeHeader(script, config, section):
     if config.has_section(section):
         if config.has_option(section, "ppn"):
             script.write("#PBS -l nodes=1:ppn=" + config.get(section, "ppn") + "\n")
+        if "hydra" in socket.gethostname():
+            if config.has_option(section, "mem"):
+                script.write("#PBS -l mem=" + config.get(section, "mem") + "\n")
+            if config.has_option(section, "vmem"):
+                script.write("#PBS -l vmem=" + config.get(section, "vmem") + "\n")
         if config.has_option(section, "walltime"):
             script.write("#PBS -l walltime=" + config.get(section, "walltime") + "\n")
         if config.has_option(section, "queue"):
             script.write("#PBS -q " + config.get(section, "queue") + "\n")
         if config.has_option(section, "processors"):
             processors = config.get(section, 'processors')
+        if "hydra" in socket.gethostname():
+            script.write("#PBS -l epilogue=/mnt/KLEINMAN_BACKUP/home/alexis.blanchetcohen/epilogue.sh\n")
     script.write("#PBS -j oe\n")
-    if (config.has_option('user', 'RAPid')) and (config.get('user', 'RAPid') != ""):
-        script.write("#PBS -A " + config.get('user', 'RAPid') + "\n")
-    else:
-        script.write("#PBS -A "  + "\n")
-        print("Script: " + script.name + "\nWarning: No RAPid specified.\nPlease add your RAPid to the user section in the configuration file and rerun this script.\nOr, add the RAPid manually to each script submitted to the queue.\nE.g.:\n[user]\nRAPid=xyz-123-abc", file=sys.stderr) 
+    if not "hydra" in socket.gethostname():
+        if (config.has_option('user', 'RAPid')) and (config.get('user', 'RAPid') != ""):
+            script.write("#PBS -A " + config.get('user', 'RAPid') + "\n")
+        else:
+            script.write("#PBS -A "  + "\n")
+            print("Script: " + script.name + "\nWarning: No RAPid specified.\nPlease add your RAPid to the user section in the configuration file and rerun this script.\nOr, add the RAPid manually to each script submitted to the queue.\nE.g.:\n[user]\nRAPid=xyz-123-abc", file=sys.stderr) 
     if config.has_option('user', 'email') and config.get('user', 'email') and config.has_option('user', 'send_email') and config.get('user', 'send_email') != "":
         script.write("#PBS -m " + config.get('user', 'send_email') + "\n")
         script.write("#PBS -M " + config.get('user', 'email') + "\n")

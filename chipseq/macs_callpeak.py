@@ -90,19 +90,19 @@ for comparison in comparisons:
     if not os.path.exists(outputDirectory + "/" + comparisonName):
         os.makedirs(outputDirectory + "/" + comparisonName)
     if pipeline:
-        treatmentFile = os.path.join(inputDirectory, treatment, treatment + ".bam")
+        treatmentFile = os.path.relpath(os.path.join(inputDirectory, treatment, treatment + ".bam"))
         if(len(samples) == 2):
-            controlFile = os.path.join(inputDirectory, control, control + ".bam")
+            controlFile = os.path.relpath(os.path.join(inputDirectory, control, control + ".bam"))
     else:
         if (subdirectories == "yes") | (subdirectories=="y"):
-            treatmentFile = os.path.join(inputDirectory, treatment, treatment + ".bam")
+            treatmentFile = os.path.relpath(os.path.join(inputDirectory, treatment, treatment + ".bam"))
         else:
-            treatmentFile = os.path.join(inputDirectory, treatment + ".bam")
+            treatmentFile = os.path.relpath(os.path.join(inputDirectory, treatment + ".bam"))
         if len(samples) == 2:
             if (subdirectories == "yes") | (subdirectories=="y"):
-                controlFile = os.path.join(inputDirectory, control, control + ".bam")
+                controlFile = os.path.relpath(os.path.join(inputDirectory, control, control + ".bam"))
             else:
-                controlFile = os.path.join(inputDirectory, control + ".bam")
+                controlFile = os.path.relpath(os.path.join(inputDirectory, control + ".bam"))
     # Create script file.
     scriptName = 'macs_callpeak_' + comparisonName + '.sh'
     script = open(scriptName, 'w')
