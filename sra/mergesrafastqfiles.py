@@ -34,7 +34,7 @@ config = util.readConfigurationFiles()
 header = config.getboolean("server", "PBS_header")
 
 # Get samples
-samplesFile = util.readsamplesFile()
+samplesFile = util.readSamplesFile(inputDirectory)
 
 # Create scripts directory, if it does not exist yet, and cd to it.
 if not os.path.exists(scriptsDirectory):

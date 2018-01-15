@@ -232,7 +232,7 @@ threads=2
 trimAdapters=yes
 minlength=36
 version=0.35
-programFile = ${server:toolsFolder}/trimmomatic/${version}/trimmomatic-${version}.jar
-adaptersFile = ${server:toolsFolder}/trimmomatic/${version}/adapters/TruSeq3-PE.fa
+programFile = ${server:toolsFolder}Trimmomatic-0.35/trimmomatic-${version}.jar
+adaptersFile = ${server:toolsFolder}Trimmomatic-0.35/adapters/TruSeq3-PE.fa
 
 
