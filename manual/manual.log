@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.21)  16 JAN 2018 09:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.21)  16 JAN 2018 09:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -523,36 +523,54 @@ x/updmap/pdftex.map}] (./manual.toc)
 \tf@toc=\write5
 \openout5 = `manual.toc'.
 
- [2] <directoryStructure.pdf, id=43, 474.77374pt x 321.2pt>
+ [2]
+
+LaTeX Warning: Reference `figure:directorystructure' on page 3 undefined on inp
+ut line 38.
+
+<directoryStructure.pdf, id=17, 474.77374pt x 321.2pt>
 File: directoryStructure.pdf Graphic file (type pdf)
 
 <use directoryStructure.pdf>
-Package pdftex.def Info: directoryStructure.pdf used on input line 41.
+Package pdftex.def Info: directoryStructure.pdf used on input line 43.
 (pdftex.def)             Requested size: 332.33936pt x 224.83847pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 48.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 50.
 
 (/gs/project/txk-653-aa/modules/software/texlive/2017/texmf-dist/tex/latex/base
 /omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 50.
  [3] [4 <./directoryStructure.pdf>]
 No file manual.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
 (./manual.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
-Package rerunfilecheck Info: File `manual.out' has not changed.
-(rerunfilecheck)             Checksum: 04F4F7ABC34728FDECF47B724EB98AB2;258.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
+
+
+Package rerunfilecheck Warning: File `manual.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `manual.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  04F4F7ABC34728FDECF47B724EB98AB2;258.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 8065 strings out of 493013
- 118465 string characters out of 6120017
- 244646 words of memory out of 5000000
- 11480 multiletter control sequences out of 15000+600000
+ 8059 strings out of 493013
+ 118408 string characters out of 6120017
+ 244521 words of memory out of 5000000
+ 11474 multiletter control sequences out of 15000+600000
  6771 words of font info for 25 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,6n,37p,941b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -562,10 +580,10 @@ public/amsfonts/cm/cmbx12.pfb></gs/project/txk-653-aa/modules/software/texlive/
 a/modules/software/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
 .pfb></gs/project/txk-653-aa/modules/software/texlive/2017/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy10.pfb>
-Output written on manual.pdf (4 pages, 4790595 bytes).
+Output written on manual.pdf (4 pages, 4790201 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  12 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
