@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.21)  16 JAN 2018 09:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.21)  16 JAN 2018 09:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -549,24 +549,23 @@ Package rerunfilecheck Info: File `manual.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
  ) 
 Here is how much of TeX's memory you used:
- 8082 strings out of 493013
- 118638 string characters out of 6120017
+ 8065 strings out of 493013
+ 118465 string characters out of 6120017
  244646 words of memory out of 5000000
- 11490 multiletter control sequences out of 15000+600000
- 9626 words of font info for 35 fonts, out of 8000000 for 9000
+ 11480 multiletter control sequences out of 15000+600000
+ 6771 words of font info for 25 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,6n,37p,941b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,6n,37p,941b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
 </gs/project/txk-653-aa/modules/software/texlive/2017/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb></gs/project/txk-653-aa/modules/software/texlive/
-2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></gs/project/txk-653-
-aa/modules/software/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></gs/project/txk-653-aa/modules/software/texlive/2017/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr17.pfb></gs/project/txk-653-aa/modules/software/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on manual.pdf (4 pages, 4799816 bytes).
+2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></gs/project/txk-653-a
+a/modules/software/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
+.pfb></gs/project/txk-653-aa/modules/software/texlive/2017/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb>
+Output written on manual.pdf (4 pages, 4790595 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 124 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  12 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
