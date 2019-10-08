@@ -13,7 +13,6 @@ This allows an extra level of control, since the command scripts can be edited d
 Feel free to use and adapt the scripts for your own use, as long as you give credit to the original authors.
 
 ### Full documentation ###
-* http://confluence.ircm.qc.ca/display/IP/IRCM+NGS+pipelines (not up-to-date)
 * [Manual](manual/manual.pdf) (Still under writing.)
 
 ### Requirements
